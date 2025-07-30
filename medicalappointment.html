@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Appointment Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-2xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Medical Appointment Form</h1>
+    
+    <form id="appointmentForm" class="space-y-5">
+      <!-- Patient Info -->
+      <div>
+        <label class="block font-medium">Full Name</label>
+        <input type="text" name="name" class="w-full mt-1 border p-2 rounded" required />
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block font-medium">Date of Birth</label>
+          <input type="date" name="dob" class="w-full mt-1 border p-2 rounded" required />
+        </div>
+        <div>
+          <label class="block font-medium">Gender</label>
+          <select name="gender" class="w-full mt-1 border p-2 rounded" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block font-medium">Phone Number</label>
+        <input type="tel" name="phone" class="w-full mt-1 border p-2 rounded" required />
+      </div>
+      <div>
+        <label class="block font-medium">Email (optional)</label>
+        <input type="email" name="email" class="w-full mt-1 border p-2 rounded" />
+      </div>
+      <div>
+        <label class="block font-medium">Address</label>
+        <textarea name="address" class="w-full mt-1 border p-2 rounded" rows="2"></textarea>
+      </div>
+
+      <!-- Appointment -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block font-medium">Preferred Date</label>
+          <input type="date" name="appointmentDate" class="w-full mt-1 border p-2 rounded" required />
+        </div>
+        <div>
+          <label class="block font-medium">Preferred Time</label>
+          <input type="time" name="appointmentTime" class="w-full mt-1 border p-2 rounded" required />
+        </div>
+      </div>
+      <div>
+        <label class="block font-medium">Type of Appointment</label>
+        <select name="appointmentType" class="w-full mt-1 border p-2 rounded" required>
+          <option value="">Choose one</option>
+          <option>General Consultation</option>
+          <option>Follow-Up Visit</option>
+          <option>Vaccination</option>
+          <option>Lab Test</option>
+          <option>Antenatal/Postnatal Care</option>
+          <option>Chronic Disease Management</option>
+        </select>
+      </div>
+
+      <!-- Medical History -->
+      <div>
+        <label class="block font-medium">Reason for Visit</label>
+        <textarea name="reason" class="w-full mt-1 border p-2 rounded" rows="3"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Book Appointment</button>
+      </div>
+    </form>
+
+    <!-- Confirmation Message -->
+    <div id="confirmation" class="mt-6 text-green-600 font-semibold text-center hidden">
+      Appointment successfully submitted!
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Optional: collect form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // For now, just show confirmation (can add backend/post logic here)
+      confirmation.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
